@@ -1,0 +1,86 @@
+<mat-accordion multi="true" *ngIf="posts.length > 0">
+  <mat-expansion-panel *ngIf="newPost">
+    <mat-expansion-panel-header>
+      {{ newPost.title }}
+    </mat-expansion-panel-header>
+    {{ newPost.content }}
+    <mat-action-row>
+      <button mat-button color="primary">Edit</button>
+      <button mat-button color="primary">Comment</button>
+      <button mat-button color="primary" (click)="addLike(newPost._id)">
+        Like
+      </button>
+      <!-- <mat-icon svgIcon="thumbs-up" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon> -->
+      <button
+        *ngIf="newPost.user._id == user()._id"
+        mat-button
+        color="warn"
+        (click)="deletePost(newPost._id)"
+      >
+        Delete
+      </button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel *ngFor="let post of posts">
+    <mat-expansion-panel-header>
+      <a [routerLink]="['/home', post.user._id]" routerLinkActive="router-link-active" >
+        {{ post.user.firstName + " " + post.user.lastName   }}
+      </a>   &nbsp;&nbsp;&nbsp;&nbsp;{{  post.title }}
+    </mat-expansion-panel-header>
+    <p>{{ post.content }}</p>
+    <mat-action-row>
+      <button *ngIf="post.user._id == user()._id" mat-button color="primary">
+        Edit
+      </button>
+      <!-- <button mat-button color = "primary" >Comment</button> -->
+      <button mat-button color="primary" (click)="addLike(post._id)">
+        Like
+      </button>
+
+      <img
+        style="padding: 2px"
+        src="https://cdn.worldvectorlogo.com/logos/facebook-like.svg"
+        alt="Like"
+        height="30"
+        width="30"
+      />
+      <h6 style="display: inline;font-size:15px">{{ post.likes.length }}</h6>
+      <button
+        *ngIf="post.user._id == user()._id"
+        mat-button
+        color="warn"
+        (click)="deletePost(post._id)"
+      >
+        Delete
+      </button>
+    </mat-action-row>
+
+    <mat-action-row>
+      <input
+        type="text"
+        (keydown)="addComment($event, post._id, comment)"
+        #comment
+        placeholder="Write a Comment ..."
+        style="padding: 7px;
+        width:100%;
+       line-height: 1;
+       border-radius: 5px;
+       border: 1px solid #ccc;
+       box-shadow: 1px 1px 1px #999;"
+      />
+    </mat-action-row>
+
+    <mat-action-row>
+    <div *ngFor="let comment of post.comments" class="p-sm-1">
+        <a [routerLink]="['/home', comment.user._id]" routerLinkActive="router-link-active" >
+          {{ comment.user.firstName + " " + comment.user.lastName }}
+        </a>
+        <br/>
+        <p class="p-sm-1">{{ comment.comment }}</p>
+        <hr/>
+      </div>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<p class="nopost" *ngIf="posts.length <= 0">No post added yet</p>

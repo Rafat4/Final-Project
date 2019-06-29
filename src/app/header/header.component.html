@@ -1,0 +1,64 @@
+<div class="row header">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-5">
+    <span class="headerspan1">
+      <!-- <img src="assets/imgs/Reefologo.jpg" height="50" width="70"> -->
+      <!-- <span class="title"><a style="text-decoration:none;color:white"  href="http://localhost:4200/home">{{ title }}</a> </span> -->
+    </span>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="float-right " *ngIf="!userLogedIn">
+      <span>
+        Email
+        <input [(ngModel)]="signInModel.email" type="email" class="email" />
+      </span>
+      <span>
+        Password
+        <input
+          [(ngModel)]="signInModel.password"
+          class="inputpass"
+          type="password"
+        />
+        &nbsp;
+      </span>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="signIn()"
+        type="button"
+        class="signinbutton"
+      >
+        Sign In
+      </button>
+    </div>
+    <div class="float-right p-sm-1" *ngIf="userLogedIn">
+
+      <input type="text" #searchText placeholder="Search person's posts" style="border-radius:20px;width:20em;text-align:center;" />
+      <button
+      (click) ="search(searchText.value)"
+        mat-raised-button
+        color="primary"
+
+        class="m-1"
+        style=" color:white;background-color:#3f51b5;border-radius:20px;"
+      >
+        Search
+      </button>
+
+      <button
+        mat-raised-button
+        color="primary"
+        class="m-1"
+        style="border-radius:20px;"
+      >
+        <a
+          class="headeranchor"
+          (click)="logout()"
+          href="http://localhost:4200/main"
+          >LogOut</a
+        >
+      </button>
+    </div>
+  </div>
+</div>

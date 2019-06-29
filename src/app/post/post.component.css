@@ -1,0 +1,31 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+/* .headerdiv {
+  padding: 5px 5px 5px;
+
+   width:515px;
+   position: relative;
+   left:340px;
+   top:-665px;
+} */
+mat-toolbar {
+  position: relative;
+   left:310px;
+   bottom:740px;
+   width:30em;
+   height: 5%;
+}
+
+textarea,
+
+mat-form-field {
+  width:100%;
+
+
+}
+button {
+  position: relative;
+  left:80%;
+
+}
+

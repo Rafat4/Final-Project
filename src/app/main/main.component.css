@@ -1,0 +1,9 @@
+.p {
+  position: relative;
+  left: 5rem;
+  bottom: 18rem;
+  font-size: 3rem;
+  color: white;
+  width: 30%;
+  text-align: center
+}

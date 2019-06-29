@@ -1,0 +1,81 @@
+<div class="signuplist">
+  <!-- <h4 class="firstTime">First Time in Reefo ?</h4> -->
+  <span class="signuphere">Sign Up </span><br /><br />
+  <form #signup="ngForm">
+    <mat-form-field>
+      <input
+        matInput
+        class="signupInputs"
+        type="text"
+        name="firstName"
+        [(ngModel)]="signUpModel.firstName"
+        placeholder="Your first name"
+        required
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        class="signupInputs"
+        type="text"
+        name="lastName"
+        [(ngModel)]="signUpModel.lastName"
+        placeholder="Your last name"
+        required
+      /> </mat-form-field
+    ><br />
+    <mat-form-field>
+        <!-- <input matInput placeholder="Email" [formControl]="emailFormControl"
+        [errorStateMatcher]="matcher">
+ <mat-hint>Errors appear instantly!</mat-hint>
+ <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+   Please enter a valid email address
+ </mat-error>
+ <mat-error *ngIf="emailFormControl.hasError('required')">
+   Email is <strong>required</strong>
+ </mat-error> -->
+      <input
+        matInput
+        class="signupInputs"
+        type="email"
+        name="email"
+        [(ngModel)]="signUpModel.email"
+        placeholder="Email"
+        required
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        class="signupInputs"
+        type="password"
+        name="password"
+        [(ngModel)]="signUpModel.password"
+        placeholder="Your Password"
+        required
+      />
+    </mat-form-field>
+
+    <br />
+    <span class="yourgender">Your gender</span><br /><br />
+    <div class="yourgender">
+      <mat-radio-group name="gender" [(ngModel)]="signUpModel.gender">
+        <mat-radio-button
+          [checked]="signUpModel.gender == 1" [value]="1" > Male
+        </mat-radio-button>
+        <mat-radio-button
+          [checked]="signUpModel.gender == 0" [value]="0">
+          Female
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <br />
+    <mat-card>
+      <button mat-raised-button color="accent" (click)="signUp(signup.valid)">
+        SignUp</button
+      ><br /><br />
+    </mat-card>
+  </form>
+</div>

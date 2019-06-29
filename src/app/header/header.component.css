@@ -1,0 +1,32 @@
+.header {
+  opacity:0.8;
+  background-color:  #5f72a9;
+  color:white;
+  bottom: 5px;
+  padding: 6px
+}
+.headerspan1 {
+ font-size: 30px;
+ left: 150px;
+}
+.title {
+ font-size:35px;
+ font-family: 'Times New Roman', Times, serif
+}
+
+.signinbutton {
+  border-radius: 20px;
+  margin-right:10px;
+}
+.inputpass {
+  border-radius: 20px;
+  padding: 5px
+}
+.email {
+  border-radius: 20px;
+  padding: 5px
+}
+.headeranchor {
+  color:white;
+  text-decoration: none;
+}

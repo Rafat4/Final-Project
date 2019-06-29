@@ -1,0 +1,79 @@
+<div
+  style="  padding: 10px 10px 10px; border-radius: 5%;"
+>
+  <p style="border-radius: 5%; font-size:15px;background-color: #f5f6f7;color:black;font-family: inherit;border-bottom: 1px solid #dddfe2;font-family: Helvetica, Arial, sans-serif;padding: 8px " class="mat-toolbar mat-primary mat-toolbar-single-row"  >
+    Creat Post
+  </p>
+
+  <mat-card>
+    <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+      <mat-form-field>
+        <input
+          matInput
+          type="text"
+          name="title"
+          placeholder="Post's Title"
+          required
+          [(ngModel)]="post.title"
+          minlength="3"
+          #title="ngModel"
+        />
+        <mat-error *ngIf="title.invalid">Please Enter post title</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea
+          matInput
+          rows="5"
+          name="content"
+          placeholder="Post's Content"
+          [(ngModel)]="post.content"
+          required
+          #content="ngModel"
+        ></textarea>
+        <mat-error *ngIf="content.invalid">Please Enter post content</mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Post</button>
+
+      <!-- <button
+        style=" position: relative;
+     left: 50%;"
+        mat-raised-button
+        color="accent"
+        (click)="onAddFeeling()"
+      >
+        Feeling
+      </button> -->
+
+      <!-- <div class="container">
+
+
+                  <form (ngSubmit)="onSubmit()">
+                      <div class="form-group">
+                          <input type="file" name="image"  />
+                      </div>
+                      <div class="form-group">
+                          <button class="btn btn-primary">Submit</button>
+                      </div>
+                  </form>
+        </div> -->
+
+
+
+
+
+       <!-- <input type="file" (change)="onFileSelected($event)"> -->
+
+      <!-- <button
+      style=" position: relative;
+   left: 15%;"
+      mat-raised-button
+      color="accent"
+      (click)="onUpload()"
+    >
+     Upload
+    </button> -->
+    </form>
+  </mat-card>
+  <hr />
+  <p>{{ newPost }}</p>
+</div>

@@ -1,0 +1,67 @@
+<div class="ml-sm-5" style=" text-align:center;padding: 10px; border-radius: 2%; background-color:white; margin-top:10px"
+>
+  <h6 style="text-align: center;font-size: 15px">My Profile</h6>
+  <label class="hoverable" for="fileInput">
+    <img [src]="url ? url : 'https://www.w3schools.com/howto/img_avatar.png'"
+    title="Upload your profile picture" />
+    <!-- <span class="hover-text">Upload your profile picture</span>
+    <div class="background"></div> -->
+  </label>
+  <br />
+  <input id="fileInput" type="file" (change)="onSelectFile($event)" />
+  <button style="width: 8em;font-size: 11px;border-radius:5px" *ngIf="url" (click)="delete()">change photo</button><br /><br />
+
+  <div *ngIf="condition; then thenBlock; else elseBlock"></div>
+  <ng-template #thenBlock>
+    <span>{{ user.firstName }} {{ user.lastName }} </span><br /><br /><hr style="border: 1px solid green;">
+    <button *ngIf="userId == loginService.user()._id" style="width:8em;font-size: 11px; border-radius:5px" (click)="edit()">Edit profile</button><br /><br />
+  </ng-template>
+
+  <ng-template #elseBlock>
+    <input
+      type="text"
+      placeholder="your firstname"
+      [(ngModel)]="user.firstName"
+    /><br /><br />
+    <input
+      type="text"
+      placeholder="your lastName"
+      [(ngModel)]="user.lastName"
+    /><br /><br />
+    <mat-radio-group name="gender" [(ngModel)]="user.gender">
+      <mat-radio-button [checked]="user.gender == 1" [value]="1">
+        Male
+      </mat-radio-button>
+      <mat-radio-button [checked]="user.gender == 0" [value]="0">
+        Female
+      </mat-radio-button> </mat-radio-group
+    ><br /><br />
+
+    <input
+      type="text"
+      placeholder="your age"
+      [(ngModel)]="user.age"
+    /><br /><br />
+
+    <textarea
+      rows="3"
+      type="text"
+      value="bio"
+      placeholder="bio"
+      [(ngModel)]="user.bio"
+    ></textarea
+    ><br /><br />
+    <button (click)="save()">Save</button><br />
+  </ng-template>
+
+  <div *ngIf="saveProfile || userId !== loginService.user()._id ">
+    <span>{{ user.firstName }} {{ user.lastName }}</span
+    ><br /><hr>
+    <span>{{ user.age }} years old</span
+    ><br /><hr>
+    <span>{{ user.gender ? "Male" : "Female" }}</span
+    ><br /><hr>
+    <span>"  {{ user.bio }} "</span
+    ><br /><hr>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="app ml-sm-5">
+  <div class="sidebar">
+    <section *ngIf="!currentUser || !showChat" class="join-chat">
+      <span style="font-size: 2em; margin-right:10px">Join Chat</span>
+      <button
+        *ngIf="!showChat"
+        type="button"
+        class="btn btn-primary"
+        (click)="addUser()"
+      >
+        Join
+      </button>
+    </section>
+    <section *ngIf="showChat" class="online-members">
+      <span style="font-size: 1.5em; margin-right:10px">Room Users</span>
+      <button type="button" class="btn btn-primary" (click)="closeChat()">
+        Clos chat
+      </button>
+      <br />
+      <ul class="user-list">
+        <li *ngFor="let user of users">
+          <span class="presence {{ user.presence.state }}"></span>
+          <span>{{ user.name }}</span>
+        </li>
+      </ul>
+    </section>
+  </div>
+</div>
+
+<div class="chat-window" *ngIf="showChat">
+  <header class="chat-header">
+    <h1>Chat</h1>
+    <button type="button" (click)="closeChat()">
+      x
+    </button>
+  </header>
+  <section class="chat-session">
+    <ul class="message-list">
+      <li class="user-message" *ngFor="let message of messages">
+        <span class="user-id">{{ message.senderId }}</span>
+        <span>{{ message.text }}</span>
+      </li>
+    </ul>
+  </section>
+  <footer class="chat-footer">
+    <form (ngSubmit)="sendMessage()">
+      <input
+        placeholder="Type a message. Hit Enter to send"
+        type="text"
+        name="message"
+        [(ngModel)]="message"
+      />
+    </form>
+  </footer>
+</div>

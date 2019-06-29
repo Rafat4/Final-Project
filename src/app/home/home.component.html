@@ -1,0 +1,13 @@
+<div class="row" style="background-color:#EBEDF0;">
+  <div class="col-sm-3 border-right border-secondary">
+      <app-profile [userId]="userId"></app-profile>
+      <app-chat></app-chat>
+  </div>
+  <div class="col-sm-6 border-right border-secondary">
+      <app-post *ngIf="!userId" (postCreated)="onPostAdded($event)"></app-post>
+      <app-postlist [newPost]="newPost" [userId]="userId"></app-postlist>
+  </div>
+  <div class="col-sm-3" >
+    <app-web-shortcut></app-web-shortcut>
+  </div>
+</div>
